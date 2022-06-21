@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
               child: const Text('Step 0'),
             ),
             ElevatedButton(
-              onPressed: () => Navigaintor.of(context).push(MaterialPageRoute(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const PageOne(),
               )),
               child: const Text('Step 1'),
