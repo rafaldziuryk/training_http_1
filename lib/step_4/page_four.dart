@@ -5,14 +5,14 @@ import 'package:http/http.dart' as http;
 import 'package:http_1/step_4/cat_fact.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-class PageThree extends StatefulWidget {
-  const PageThree({Key? key}) : super(key: key);
+class PageFour extends StatefulWidget {
+  const PageFour({Key? key}) : super(key: key);
 
   @override
-  State<PageThree> createState() => _PageThreeState();
+  State<PageFour> createState() => _PageFourState();
 }
 
-class _PageThreeState extends State<PageThree> {
+class _PageFourState extends State<PageFour> {
   Future<CatFact> fact = Future(() => const CatFact(fact: '', length: 0));
 
   late final Dio dio;
@@ -44,7 +44,7 @@ class _PageThreeState extends State<PageThree> {
           setState(() {
             fact = Future.microtask(() async {
               final response = await dio.get('/fact');
-              return response.data['fact'];
+              return CatFact.fromMap(response.data);
             });
           });
         },
