@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -27,13 +28,15 @@ class _PageThreeState extends State<PageThree> {
       validateStatus: (status) => status == 200, // options.dart:609
     ));
 
-    dio.interceptors.add(PrettyDioLogger(
-      requestBody: true,
-      request: true,
-      requestHeader: true,
-      responseBody: true,
-      responseHeader: true,
-    ));
+    if (kDebugMode) {
+      dio.interceptors.add(PrettyDioLogger(
+        requestBody: true,
+        request: true,
+        requestHeader: true,
+        responseBody: true,
+        responseHeader: true,
+      ));
+    }
   }
 
   @override

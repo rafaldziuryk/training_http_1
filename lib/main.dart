@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_1/step_0/page_zero.dart';
@@ -10,7 +11,9 @@ import 'package:http_1/step_4/page_four.dart';
 import 'package:http_1/step_5/page_five.dart';
 
 void main() {
+  Fimber.plantTree(DebugTree());
   runApp(const MyApp());
+  Fimber.e('message');
 }
 
 class MyApp extends StatelessWidget {

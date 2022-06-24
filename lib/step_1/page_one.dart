@@ -11,7 +11,7 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-  Future<String> fact = Future(() => '');
+  Future<String> fact = Future.value('Tap a play button to get a cat fact');
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _PageOneState extends State<PageOne> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            fact = Future.microtask(() async {
+            fact = Future.delayed(Duration(seconds: 2), () async {
               final url = Uri.parse('https://catfact.ninja/fact');
               final response = await http.get(url);
               final json = jsonDecode(response.body);
@@ -33,8 +33,7 @@ class _PageOneState extends State<PageOne> {
         child: FutureBuilder<String>(
           future: fact,
           builder: (context, snapshot) {
-            print(
-                'hasData = ${snapshot.hasData} state: ${snapshot.connectionState}');
+            print('hasData = ${snapshot.hasData} state: ${snapshot.connectionState}');
 
             switch (snapshot.connectionState) {
               case ConnectionState.none:

@@ -13,7 +13,8 @@ class PageFour extends StatefulWidget {
 }
 
 class _PageFourState extends State<PageFour> {
-  Future<CatFact> fact = Future(() => const CatFact(fact: '', length: 0));
+  List<CatFact> facts = [];
+  Future<List<CatFact>> fact = Future.value([]);
 
   late final Dio dio;
 
@@ -44,7 +45,9 @@ class _PageFourState extends State<PageFour> {
           setState(() {
             fact = Future.microtask(() async {
               final response = await dio.get('/fact');
-              return CatFact.fromMap(response.data);
+              final fact = CatFact.fromMap(response.data);
+              facts.add(fact);
+              return facts;
             });
           });
         },
@@ -53,7 +56,7 @@ class _PageFourState extends State<PageFour> {
         ),
       ),
       body: Center(
-        child: FutureBuilder<CatFact>(
+        child: FutureBuilder<List<CatFact>>(
           future: fact,
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
@@ -64,7 +67,13 @@ class _PageFourState extends State<PageFour> {
               case ConnectionState.active:
               case ConnectionState.done:
                 if (snapshot.hasData) {
-                  return Text(snapshot.data?.fact ?? '');
+                  return ListView.builder(
+                    itemCount: snapshot.data?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      final item = snapshot.data?[index];
+                      return Text(item?.fact ?? '');
+                    },
+                  );
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else {

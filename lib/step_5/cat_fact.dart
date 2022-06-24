@@ -4,7 +4,9 @@ part 'cat_fact.g.dart';
 
 @JsonSerializable()
 class CatFact {
-  @JsonKey(name: 'fact')
+  @JsonKey(
+    name: 'fact',
+  )
   final String fact;
 
   @JsonKey(name: 'length')

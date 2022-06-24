@@ -17,13 +17,27 @@ class _PageZeroState extends State<PageZero> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
+        // onPressed: () async {
+        //   final url = Uri.parse('https://catfact.ninja/fact');
+        //   final response = await http.get(url);
+        //   print(response.body);
+        //   final json = jsonDecode(response.body);
+        //   print(json);
+        //   setState(() {
+        //     fact = json['fact'];
+        //   });
+        // },
+        onPressed: () {
           final url = Uri.parse('https://catfact.ninja/fact');
-          final response = await http.get(url);
-          final json = jsonDecode(response.body);
-          setState(() {
-            fact = json['fact'];
+          http.get(url).then((response) {
+            print(response.body);
+            final json = jsonDecode(response.body);
+            print(json);
+            setState(() {
+              fact = json['fact'];
+            });
           });
+          print('run get');
         },
         child: const Icon(Icons.play_arrow),
       ),

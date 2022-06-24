@@ -19,7 +19,9 @@ class _PageTwoState extends State<PageTwo> {
         onPressed: () {
           setState(() {
             fact = Future.microtask(() async {
-              final response = await Dio().get('https://catfact.ninja/fact');
+              final response = await Dio().get(
+                'https://catfact.ninja/fact',
+              );
               return response.data['fact'];
             });
           });

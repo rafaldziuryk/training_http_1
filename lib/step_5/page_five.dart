@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:http_1/step_5/cat_fact.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -31,6 +32,7 @@ class _PageFiveState extends State<PageFive> {
       requestHeader: true,
       responseBody: true,
       responseHeader: true,
+      logPrint: (text) => Fimber.w('BACKEND $text'),
     ));
   }
 
