@@ -40,6 +40,7 @@ class _PageFourState extends State<PageFour> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {

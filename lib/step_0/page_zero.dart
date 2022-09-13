@@ -16,29 +16,30 @@ class _PageZeroState extends State<PageZero> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
-        // onPressed: () async {
-        //   final url = Uri.parse('https://catfact.ninja/fact');
-        //   final response = await http.get(url);
-        //   print(response.body);
-        //   final json = jsonDecode(response.body);
-        //   print(json);
-        //   setState(() {
-        //     fact = json['fact'];
-        //   });
-        // },
-        onPressed: () {
+        onPressed: () async {
           final url = Uri.parse('https://catfact.ninja/fact');
-          http.get(url).then((response) {
-            print(response.body);
-            final json = jsonDecode(response.body);
-            print(json);
-            setState(() {
-              fact = json['fact'];
-            });
+          final response = await http.get(url);
+          print(response.body);
+          final json = jsonDecode(response.body);
+          print(json);
+          setState(() {
+            fact = json['fact'];
           });
-          print('run get');
         },
+        // onPressed: () {
+        //   final url = Uri.parse('https://catfact.ninja/fact');
+        //   http.get(url).then((response) {
+        //     print(response.body);
+        //     final json = jsonDecode(response.body);
+        //     print(json);
+        //     setState(() {
+        //       fact = json['fact'];
+        //     });
+        //   });
+        //   print('run get');
+        // },
         child: const Icon(Icons.play_arrow),
       ),
       body: Center(

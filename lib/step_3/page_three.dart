@@ -42,6 +42,7 @@ class _PageThreeState extends State<PageThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {

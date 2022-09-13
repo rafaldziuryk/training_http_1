@@ -16,6 +16,7 @@ class _PageOneState extends State<PageOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
