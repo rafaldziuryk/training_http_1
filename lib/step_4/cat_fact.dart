@@ -45,6 +45,4 @@ class CatFact {
       length: map['length'] as int,
     );
   }
-
-//</editor-fold>
 }
